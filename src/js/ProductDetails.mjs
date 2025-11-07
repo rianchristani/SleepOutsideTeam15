@@ -18,7 +18,7 @@ export default class ProductDetails {
     this.product = await this.dataSource.findProductById(this.productId);
     this.renderProductDetails();
     // console.log(document.getElementById("addToCart"));
-      // .addEventListener("click", this.addProductToCart.bind(this));
+    // .addEventListener("click", this.addProductToCart.bind(this));
 
   }
 
@@ -34,15 +34,15 @@ export default class ProductDetails {
     const renderedHTML = document.getElementById("rendered-product-detail");
     const clone = template.content.cloneNode(true);
     const [brand, name, img, price, color, description, button] = clone.querySelectorAll("h3, h2, img, p, p, p, button");
-    
+
     brand.textContent = this.product["Brand"]["Name"];
     name.textContent = this.product["NameWithoutBrand"];
-    img.setAttribute("src",this.product["Image"]);
+    img.setAttribute("src", this.product["Image"]);
     price.textContent = `$ ${this.product["ListPrice"]}`;
     color.textContent = this.product["Colors"]["ColorName"];
-    description.textContent = this.product["DescriptionHtmlSimple"];
-    button.setAttribute("data-id",this.productId);
-    button.setAttribute("id","addToCart");   
+    description.innerHTML = this.product["DescriptionHtmlSimple"];
+    button.setAttribute("data-id", this.productId);
+    button.setAttribute("id", "addToCart");
     button.addEventListener("click", this.addProductToCart.bind(this));
     renderedHTML.appendChild(clone);
   }
