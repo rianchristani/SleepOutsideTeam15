@@ -32,7 +32,6 @@ export default class ProductDetails {
       previous[0].quantity += 1;
       // productsInCart.push(this.product);
     } else {
-      console.log("Previous NO es mayor que cero");
       this.product.quantity = 1;
       productsInCart.push(this.product);
     }
