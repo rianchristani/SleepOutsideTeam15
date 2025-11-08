@@ -51,9 +51,9 @@ export default class ProductDetails {
     img.setAttribute("src", this.product["Image"]);
     price.textContent = `$ ${this.product["ListPrice"]}`;
     color.textContent = this.product["Colors"]["ColorName"];
-    description.textContent = this.product["DescriptionHtmlSimple"];
-    button.setAttribute("data-id", this.productId);
-    button.setAttribute("id", "addToCart");
+    description.innerHTML = this.product["DescriptionHtmlSimple"];
+    button.setAttribute("data-id",this.productId);
+    button.setAttribute("id","addToCart");   
     button.addEventListener("click", this.addProductToCart.bind(this));
     renderedHTML.appendChild(clone);
   }
