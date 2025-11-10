@@ -1,5 +1,5 @@
 
-import {renderListWithTemplate, setLocalStorage} from "./utils.mjs";
+import { renderListWithTemplate, setLocalStorage } from "./utils.mjs";
 
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">  
@@ -13,7 +13,7 @@ function cartItemTemplate(item) {
     <h2 class="card__name">${item.Name}</h2>
   </a>
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-  <p class="cart-card__quantity">qty: 1</p>
+  <p class="cart-card__quantity">${item.quantity}</p>
   <p class="cart-card__price">$${item.FinalPrice}</p>
   <span class="remove-item" data-id="${item.Id}">
     <img src="../images/icons/circle-icon.svg" alt="Remove Icon" width="28" loading="lazy">
@@ -23,33 +23,33 @@ function cartItemTemplate(item) {
   return newItem;
 }
 
-export default class CartData{
+export default class CartData {
 
-  constructor(cartItems,outputHTML){
+  constructor(cartItems, outputHTML) {
     this.cartItems = cartItems;
     this.outputHTML = outputHTML;
   }
 
-  init(){
+  init() {
     this.renderCartContents();
   }
 
-  renderCartContents() {  
-    renderListWithTemplate(cartItemTemplate,this.outputHTML,this.cartItems,"afterbegin",true)
+  renderCartContents() {
+    renderListWithTemplate(cartItemTemplate, this.outputHTML, this.cartItems, "afterbegin", true)
     document.querySelectorAll(".remove-item").forEach(
       (removeIcon) => {
         removeIcon.addEventListener("click", () => {
           this.removeItem(removeIcon.dataset.id);
-          });
-        }
-      )
+        });
+      }
+    )
   }
 
-  removeItem(id){
+  removeItem(id) {
     this.cartItems = this.cartItems.filter(
       (cartItem) => cartItem.Id !== id
     );
-    setLocalStorage("so-cart",this.cartItems);
+    setLocalStorage("so-cart", this.cartItems);
     this.renderCartContents();
   }
 

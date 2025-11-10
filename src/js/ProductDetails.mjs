@@ -30,9 +30,7 @@ export default class ProductDetails {
     const previous = productsInCart.filter(item => item.Id == this.product.Id);
     if (previous.length > 0) {
       previous[0].quantity += 1;
-      // productsInCart.push(this.product);
     } else {
-      console.log("Previous NO es mayor que cero");
       this.product.quantity = 1;
       productsInCart.push(this.product);
     }
@@ -52,8 +50,8 @@ export default class ProductDetails {
     price.textContent = `$ ${this.product["ListPrice"]}`;
     color.textContent = this.product["Colors"]["ColorName"];
     description.innerHTML = this.product["DescriptionHtmlSimple"];
-    button.setAttribute("data-id",this.productId);
-    button.setAttribute("id","addToCart");   
+    button.setAttribute("data-id", this.productId);
+    button.setAttribute("id", "addToCart");
     button.addEventListener("click", this.addProductToCart.bind(this));
     renderedHTML.appendChild(clone);
   }
