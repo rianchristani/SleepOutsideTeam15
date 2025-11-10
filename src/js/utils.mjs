@@ -23,7 +23,7 @@ export function setClick(selector, callback) {
 }
 
 // get a url params
-export function getParam(param){
+export function getParam(param) {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const paramValue = urlParams.get(param);
@@ -31,10 +31,17 @@ export function getParam(param){
 }
 
 // 
-export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = false){
-  if (clear){
+export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = false) {
+  if (clear) {
     parentElement.innerHTML = "";
   }
+
+  //prevent errors if list is null or empty
+  if (!list || !Array.isArray(list) || list.length === 0) {
+    parentElement.innerHTML = "<p>Your cart is empty.</p>";
+    return;
+  }
+
   const htmlStrings = list.map(templateFn);
-  parentElement.insertAdjacentHTML(position,htmlStrings.join(""));
+  parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
 }
