@@ -242,14 +242,12 @@ button {
   grid-column: 3;
 }
 
-.remove-item{
+.remove-item {
   position: absolute;
   right: 0px;
   top: 10px;
   cursor: pointer;
 }
-
-
 
 @media screen and (min-width: 500px) {
   body {
