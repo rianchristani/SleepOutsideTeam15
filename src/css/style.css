@@ -271,3 +271,8 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
+
+/* Cart total */
+.cart-footer{
+  display: none;
+}

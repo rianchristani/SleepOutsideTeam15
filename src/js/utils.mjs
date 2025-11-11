@@ -45,3 +45,20 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
   const htmlStrings = list.map(templateFn);
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
 }
+
+export function updadeCartPrice(item){
+const price = document.querySelector(".cart-footer");
+let totalAmount = 0
+
+if (item != "") {
+    price.style.display = "block";
+
+    item.forEach(i => {
+    totalAmount += i.FinalPrice * i.quantity;
+    
+});
+}
+    if (price){
+        price.textContent = totalAmount;
+    }
+}
