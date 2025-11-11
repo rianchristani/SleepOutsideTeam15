@@ -1,5 +1,6 @@
 
 import { renderListWithTemplate, setLocalStorage } from "./utils.mjs";
+import { updadeCartPrice } from "./cart.js";
 
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">  
@@ -51,6 +52,7 @@ export default class CartData {
     );
     setLocalStorage("so-cart", this.cartItems);
     this.renderCartContents();
+    updadeCartPrice();
   }
 
 }
