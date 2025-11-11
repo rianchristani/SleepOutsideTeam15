@@ -6,8 +6,6 @@ const cartItems = getLocalStorage("so-cart");
 const productList = document.querySelector(".product-list");
 const cartData = new CartData(cartItems,productList);
 const price = document.querySelector(".cart-footer");
-
-const cartData = new CartData(cartItems, productList);
 cartCounter();
 cartData.init();
 
