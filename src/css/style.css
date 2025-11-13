@@ -206,6 +206,7 @@ button {
 /* Start cart list card styles */
 .cart-card {
   display: grid;
+  position: relative;
   grid-template-columns: 25% auto 15%;
   font-size: var(--small-font);
   /* max-height: 120px; */
@@ -241,6 +242,13 @@ button {
   grid-column: 3;
 }
 
+.remove-item {
+  position: absolute;
+  right: 0px;
+  top: 10px;
+  cursor: pointer;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
@@ -260,4 +268,9 @@ button {
 footer {
   font-size: var(--small-font);
   padding: 1em;
+}
+
+/* Cart total */
+.cart-footer {
+  display: none;
 }

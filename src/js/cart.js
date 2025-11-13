@@ -1,28 +1,29 @@
 import { getLocalStorage } from "./utils.mjs";
+import CartData from "./CartData.mjs";
+import cartCounter from "./cartCounter.mjs";
 
-function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart");
-  const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-  document.querySelector(".product-list").innerHTML = htmlItems.join("");
+const cartItems = getLocalStorage("so-cart");
+const productList = document.querySelector(".product-list");
+const cartData = new CartData(cartItems, productList);
+const price = document.querySelector(".cart-footer");
+cartCounter();
+cartData.init();
+
+export function updadeCartPrice() {
+  let totalAmount = 0;
+  const items = cartData.cartItems;
+
+  if (items != 0) {
+    price.style.display = "block";
+
+    items.forEach((i) => {
+      totalAmount += parseFloat(i.FinalPrice) * parseFloat(i.quantity);
+    });
+  } else {
+    price.style.display = "none";
+  }
+
+  price.textContent = `Total: $${totalAmount}`;
 }
 
-function cartItemTemplate(item) {
-  const newItem = `<li class="cart-card divider">
-  <a href="#" class="cart-card__image">
-    <img
-      src="${item.Image}"
-      alt="${item.Name}"
-    />
-  </a>
-  <a href="#">
-    <h2 class="card__name">${item.Name}</h2>
-  </a>
-  <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-  <p class="cart-card__quantity">qty: 1</p>
-  <p class="cart-card__price">$${item.FinalPrice}</p>
-</li>`;
-
-  return newItem;
-}
-
-renderCartContents();
+updadeCartPrice();

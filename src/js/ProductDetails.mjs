@@ -49,7 +49,7 @@ export default class ProductDetails {
 
     brand.textContent = this.product["Brand"]["Name"];
     name.textContent = this.product["NameWithoutBrand"];
-    img.setAttribute("src", this.product["Images"]["PrimaryLarge"]);
+    img.setAttribute("src", this.product["Image"]);
     price.textContent = `$ ${this.product["ListPrice"]}`;
     color.textContent = this.product["Colors"]["ColorName"];
     description.innerHTML = this.product["DescriptionHtmlSimple"];

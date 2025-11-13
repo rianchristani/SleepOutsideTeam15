@@ -21,3 +21,44 @@ export function setClick(selector, callback) {
   });
   qs(selector).addEventListener("click", callback);
 }
+
+// get a url params
+export function getParam(param) {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const paramValue = urlParams.get(param);
+  return paramValue;
+}
+
+// 
+export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = false) {
+  if (clear) {
+    parentElement.innerHTML = "";
+  }
+
+  //prevent errors if list is null or empty
+  if (!list || !Array.isArray(list) || list.length === 0) {
+    parentElement.innerHTML = "<p>Your cart is empty.</p>";
+    return;
+  }
+
+  const htmlStrings = list.map(templateFn);
+  parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
+}
+
+export function updadeCartPrice(item){
+const price = document.querySelector(".cart-footer");
+let totalAmount = 0
+
+if (item != "") {
+    price.style.display = "block";
+
+    item.forEach(i => {
+    totalAmount += i.FinalPrice * i.quantity;
+    
+});
+}
+    if (price){
+        price.textContent = totalAmount;
+    }
+}
