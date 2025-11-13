@@ -30,8 +30,14 @@ export function getParam(param) {
   return paramValue;
 }
 
-// 
-export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = false) {
+//
+export function renderListWithTemplate(
+  templateFn,
+  parentElement,
+  list,
+  position = "afterbegin",
+  clear = false,
+) {
   if (clear) {
     parentElement.innerHTML = "";
   }
@@ -46,19 +52,31 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
 }
 
-export function updadeCartPrice(item){
-const price = document.querySelector(".cart-footer");
-let totalAmount = 0
+export function sortBy(products, sortList) {
+  const sortFunctions = {
+    "Name Asc": (a, b) => a.Name.localeCompare(b.Name),
+    "Name Desc": (a, b) => b.Name.localeCompare(a.Name),
+    "Price Asc": (a, b) => a.LastPrice - b.LastPrice,
+    "Price Desc": (a, b) => b.LastPrice - a.LastPrice,
+  };
 
-if (item != "") {
+  const sortFunction = sortFunctions[sortList];
+
+  return sortFunction ? products.sort(sortFunction) : products;
+}
+
+export function updateCartPrice(item) {
+  const price = document.querySelector(".cart-footer");
+  let totalAmount = 0;
+
+  if (item != "") {
     price.style.display = "block";
 
-    item.forEach(i => {
-    totalAmount += i.FinalPrice * i.quantity;
-    
-});
-}
-    if (price){
-        price.textContent = totalAmount;
-    }
+    item.forEach((i) => {
+      totalAmount += i.FinalPrice * i.quantity;
+    });
+  }
+  if (price) {
+    price.textContent = totalAmount;
+  }
 }
