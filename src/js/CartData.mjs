@@ -1,4 +1,3 @@
-
 import { renderListWithTemplate, setLocalStorage } from "./utils.mjs";
 import { updadeCartPrice } from "./cart.js";
 
@@ -25,7 +24,6 @@ function cartItemTemplate(item) {
 }
 
 export default class CartData {
-
   constructor(cartItems, outputHTML) {
     this.cartItems = cartItems;
     this.outputHTML = outputHTML;
@@ -36,26 +34,24 @@ export default class CartData {
   }
 
   renderCartContents() {
-    renderListWithTemplate(cartItemTemplate, this.outputHTML, this.cartItems, "afterbegin", true)
-    document.querySelectorAll(".remove-item").forEach(
-      (removeIcon) => {
-        removeIcon.addEventListener("click", () => {
-          this.removeItem(removeIcon.dataset.id);
-        });
-      }
-    )
+    renderListWithTemplate(
+      cartItemTemplate,
+      this.outputHTML,
+      this.cartItems,
+      "afterbegin",
+      true,
+    );
+    document.querySelectorAll(".remove-item").forEach((removeIcon) => {
+      removeIcon.addEventListener("click", () => {
+        this.removeItem(removeIcon.dataset.id);
+      });
+    });
   }
 
   removeItem(id) {
-    this.cartItems = this.cartItems.filter(
-      (cartItem) => cartItem.Id !== id
-    );
+    this.cartItems = this.cartItems.filter((cartItem) => cartItem.Id !== id);
     setLocalStorage("so-cart", this.cartItems);
     this.renderCartContents();
-<<<<<<< HEAD
-=======
     updadeCartPrice();
->>>>>>> upstream/main
   }
-
 }
