@@ -1,7 +1,8 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, loadHeaderFooter } from "./utils.mjs";
 import CartData from "./CartData.mjs";
 import cartCounter from "./cartCounter.mjs";
 
+loadHeaderFooter(cartCounter);
 const cartItems = getLocalStorage("so-cart");
 const productList = document.querySelector(".product-list");
 const cartData = new CartData(cartItems, productList);
@@ -23,7 +24,5 @@ export function updateCartPrice() {
 
   price.textContent = `Total: $${totalAmount}`;
 }
-
-cartCounter();
 updateCartPrice();
 cartData.init();
