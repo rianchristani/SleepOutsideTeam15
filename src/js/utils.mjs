@@ -51,6 +51,32 @@ export function renderListWithTemplate(
   const htmlStrings = list.map(templateFn);
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
 }
+//
+
+
+//////function render added team
+export function renderWithTemplate(template, parentElement, data, callback) {
+  parentElement.insertAdjacentHTML("afterbegin", template);
+  if (callback) {
+    callback(data);
+  }
+}
+///////////////////request template
+export async function loadTemplate(path) {
+  const res = await fetch(path);
+  const template = await res.text();
+  return template;
+}
+
+
+export async function loadHeaderFooter() {
+  const header = document.querySelector("#main-header");
+  const footer = document.querySelector("#main-footer");
+  const headerTemplate = await loadTemplate("../partial/header.html");
+  const footerTemplate = await loadTemplate("../partial/footer.html");
+  // renderWithTemplate(headerTemplate, header);
+  // renderWithTemplate(footerTemplate, footer);
+}
 
 export function sortBy(products, sortList) {
   const sortFunctions = {
