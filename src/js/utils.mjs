@@ -69,13 +69,13 @@ export async function loadTemplate(path) {
 }
 
 
-export async function loadHeaderFooter() {
-  const header = document.querySelector("#main-header");
-  const footer = document.querySelector("#main-footer");
-  const headerTemplate = await loadTemplate("../partial/header.html");
-  const footerTemplate = await loadTemplate("../partial/footer.html");
-  // renderWithTemplate(headerTemplate, header);
-  // renderWithTemplate(footerTemplate, footer);
+export async function loadHeaderFooter(callback) {
+  const header = document.querySelector("header");
+  const footer = document.querySelector("footer");
+  const headerTemplate = await loadTemplate("../partials/header.html");
+  const footerTemplate = await loadTemplate("../partials/footer.html");
+  renderWithTemplate(headerTemplate, header, "", callback);
+  renderWithTemplate(footerTemplate, footer);
 }
 
 export function sortBy(products, sortList) {
