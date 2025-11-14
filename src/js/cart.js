@@ -3,7 +3,7 @@ import CartData from "./CartData.mjs";
 import cartCounter from "./cartCounter.mjs";
 
 
-// loadHeaderFooter(cartCounter);
+loadHeaderFooter(cartCounter);
 const cartItems = getLocalStorage("so-cart");
 const productList = document.querySelector(".product-list");
 const cartData = new CartData(cartItems, productList);
