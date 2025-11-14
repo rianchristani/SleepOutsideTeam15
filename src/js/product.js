@@ -4,7 +4,6 @@ import ProductDetails from "./ProductDetails.mjs";
 import cartCounter from "./cartCounter.mjs";
 import { loadHeaderFooter } from "./utils.mjs";
 
-
 loadHeaderFooter(cartCounter);
 const productId = getParam("product");
 const dataSource = new ProductData("tents");
