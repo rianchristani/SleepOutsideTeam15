@@ -225,6 +225,20 @@ button {
   width: 100%;
 }
 
+.discounted-product{
+  display: flex;
+}
+.product-card__price{
+  font-size: 1.1rem;
+}
+
+.discounted-product .product-card__suggested_price{
+  font-size: 0.8rem;
+  text-decoration: line-through;
+  margin-left: -1rem;
+}
+
+
 /* Cart list styles */
 .cart-card {
   display: grid;

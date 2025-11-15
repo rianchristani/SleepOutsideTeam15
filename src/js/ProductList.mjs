@@ -1,6 +1,15 @@
 import { renderListWithTemplate, sortBy,titleForCategory } from "./utils.mjs";
 
 function productCardTemplate(product) {
+  let productPrice = `<p class="product-card__price">$${product.FinalPrice}</p>`;
+  if (product.FinalPrice < product.SuggestedRetailPrice){
+    productPrice = `
+    <div class="discounted-product">
+      <p class="product-card__price">$${product.FinalPrice}</p>
+      <p class="product-card__suggested_price">$${product.SuggestedRetailPrice}</p>
+    </div>
+    `
+  }
   return `
   <li class="product-card">
     <a href="/product_pages/?product=${product.Id}">
@@ -10,11 +19,12 @@ function productCardTemplate(product) {
       />
       <h3 class="card__brand">${product.Brand.Name}</h3>
       <h2 class="card__name">${product.NameWithoutBrand}</h2>
-      <p class="product-card__price">$${product.ListPrice}</p>
+      ${productPrice}
     </a>
   </li>
   `;
 }
+
 
 export default class ProductList {
   constructor(category, dataSource, outputHTML) {
