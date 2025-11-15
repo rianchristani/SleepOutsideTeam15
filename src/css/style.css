@@ -296,3 +296,20 @@ footer {
 .cart-footer {
   display: none;
 }
+
+/* Remove and Add ONE item */
+.addOne-item{
+  text-align: right;
+}
+
+.removeOne-item{
+  text-align: right;
+}
+
+.addOne-item:hover{
+  cursor: pointer;
+}
+
+.removeOne-item{
+  cursor: pointer;
+}
