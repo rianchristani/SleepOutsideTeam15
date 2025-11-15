@@ -298,18 +298,18 @@ footer {
 }
 
 /* Remove and Add ONE item */
-.addOne-item{
+.addOne-item {
   text-align: right;
 }
 
-.removeOne-item{
+.removeOne-item {
   text-align: right;
 }
 
-.addOne-item:hover{
+.addOne-item:hover {
   cursor: pointer;
 }
 
-.removeOne-item{
+.removeOne-item {
   cursor: pointer;
 }
