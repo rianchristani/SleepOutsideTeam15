@@ -1,9 +1,9 @@
-import { renderListWithTemplate, sortBy } from "./utils.mjs";
+import { renderListWithTemplate, sortBy,titleForCategory } from "./utils.mjs";
 
 function productCardTemplate(product) {
   return `
   <li class="product-card">
-    <a href="product_pages/?product=${product.Id}">
+    <a href="/product_pages/?product=${product.Id}">
       <img
         src="${product.Images.PrimaryMedium}"
         alt="${product.NameWithoutBrand}"
@@ -32,6 +32,8 @@ export default class ProductList {
     }
 
     this.renderList();
+    const title = document.querySelector("#title");
+    title.textContent = `Top Products: ${titleForCategory(this.category)}`;
   }
 
   renderList() {

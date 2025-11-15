@@ -106,3 +106,18 @@ export function updateCartPrice(item) {
     price.textContent = totalAmount;
   }
 }
+
+export function titleForCategory(category){
+  switch(category){
+    case "tents":
+      return "Tents";
+    case "backpacks":
+      return "Backpacks";
+    case "sleeping-bags":
+      return "Sleeping Bags";
+    case "hammocks":
+      return "Hammocks";
+    default:
+      return "";
+  }
+}
