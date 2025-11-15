@@ -298,18 +298,29 @@ footer {
 }
 
 /* Remove and Add ONE item */
-.addOne-item{
+.addOne-item {
   text-align: right;
 }
 
-.removeOne-item{
+.removeOne-item {
   text-align: right;
 }
 
-.addOne-item:hover{
+.addOne-item:hover {
   cursor: pointer;
 }
 
-.removeOne-item{
+.removeOne-item {
   cursor: pointer;
+}
+
+header form {
+  align-self: center;
+}
+
+header form input[type="submit"],
+header form input[type="text"] {
+  padding: 0.4em;
+  margin: 0;
+  margin-left: -0.6em;
 }
