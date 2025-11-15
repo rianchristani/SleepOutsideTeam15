@@ -1,4 +1,4 @@
-import { renderListWithTemplate, sortBy,titleForCategory } from "./utils.mjs";
+import { renderListWithTemplate, sortBy, titleForCategory, categories } from "./utils.mjs";
 
 function productCardTemplate(product) {
   return `
@@ -35,7 +35,22 @@ export default class ProductList {
     const title = document.querySelector("#title");
     title.textContent = `Top Products: ${titleForCategory(this.category)}`;
   }
+  async initsearch(sort = "") {
+    this.productList = [];
+    let cat = categories();
+    for (let i = 0; i < cat.length; i++) {
+      this.productList.push(await this.dataSource.getData(cat[i]));
+    }
+    this.productList = this.productList.flat();
+    this.productList = searchingInProducts(this.productList, this.category);
 
+    if (sort) {
+      this.productList = sortBy(this.productList, sort);
+    }
+
+
+    this.renderList();
+  }
   renderList() {
     renderListWithTemplate(
       productCardTemplate,
