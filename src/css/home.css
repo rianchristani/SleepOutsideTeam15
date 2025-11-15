@@ -1,4 +1,4 @@
-.categories{
+.categories {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -6,7 +6,7 @@
   gap: 100px;
 }
 
-.categories a{
+.categories a {
   text-decoration: none;
   display: flex;
   flex-direction: column;
