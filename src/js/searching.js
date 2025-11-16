@@ -5,7 +5,7 @@ import { getParam, loadHeaderFooter } from "./utils.mjs";
 
 let category = getParam("searching");
 if (category == null) {
-  category = "";
+    category = "";
 }
 
 loadHeaderFooter(cartCounter);
@@ -15,14 +15,14 @@ const types = ["Name", "Price"];
 const directions = ["Asc", "Desc"];
 
 for (let i = 0; i < types.length; i++) {
-  for (let j = 0; j < directions.length; j++) {
-    const element = document.createElement("option");
-    const value = `${types[i]} ${directions[j]}`;
-    element.value = value;
-    element.textContent = value;
+    for (let j = 0; j < directions.length; j++) {
+        const element = document.createElement("option");
+        const value = `${types[i]} ${directions[j]}`;
+        element.value = value;
+        element.textContent = value;
 
-    selector.appendChild(element);
-  }
+        selector.appendChild(element);
+    }
 }
 
 const dataSource = new ProductData();
@@ -32,5 +32,5 @@ productsTitle.textContent += `: ${category}`;
 const productListing = new ProductList(category, dataSource, productListHTML);
 productListing.initsearch();
 selector.addEventListener("change", (e) => {
-  productListing.initsearch(e.target.value);
+    productListing.initsearch(e.target.value);
 });

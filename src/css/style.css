@@ -89,7 +89,7 @@ p {
   margin-top: -1.3em;
 }
 
-.logo--square > div {
+.logo--square>div {
   margin-top: -1.7em;
 }
 
@@ -225,6 +225,21 @@ button {
   width: 100%;
 }
 
+.discounted-product {
+  display: flex;
+}
+
+.product-card__price {
+  font-size: 1.1rem;
+}
+
+.discounted-product .product-card__suggested_price {
+  font-size: 0.8rem;
+  text-decoration: line-through;
+  margin-left: -1rem;
+}
+
+
 /* Cart list styles */
 .cart-card {
   display: grid;
@@ -318,9 +333,29 @@ header form {
   align-self: center;
 }
 
+header form input[type="text"] {
+  border-top-left-radius: 1em;
+  border-bottom-left-radius: 1em;
+}
+
+header form input[type="submit"]:hover {
+  background-color: #d0d0d0;
+}
+
+header form input[type="submit"] {
+
+  border-top-right-radius: 1em;
+  border-bottom-right-radius: 1em;
+
+}
+
 header form input[type="submit"],
 header form input[type="text"] {
   padding: 0.4em;
+  padding-left: .6em;
   margin: 0;
   margin-left: -0.6em;
+  /* border-radius: 1em; */
+  border: 1px solid rgb(1, 1, 1,0.3);
+
 }

@@ -1,0 +1,16 @@
+.categories {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 50px 0px;
+  gap: 100px;
+}
+
+.categories a {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--dark-grey);
+}
