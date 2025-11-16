@@ -1,8 +1,8 @@
-import { renderListWithTemplate, sortBy,titleForCategory } from "./utils.mjs";
+import { renderListWithTemplate, sortBy, titleForCategory, categories, searchingInProducts } from "./utils.mjs";
 
 function productCardTemplate(product) {
   let productPrice = `<p class="product-card__price">$${product.FinalPrice}</p>`;
-  if (product.FinalPrice < product.SuggestedRetailPrice){
+  if (product.FinalPrice < product.SuggestedRetailPrice) {
     productPrice = `
     <div class="discounted-product">
       <p class="product-card__price">$${product.FinalPrice}</p>
@@ -44,6 +44,39 @@ export default class ProductList {
     this.renderList();
     const title = document.querySelector("#title");
     title.textContent = `Top Products: ${titleForCategory(this.category)}`;
+  }
+  async initsearch(sort = "") {
+    this.productList = [];
+    let cat = categories();
+    for (let i = 0; i < cat.length; i++) {
+      this.productList.push(await this.dataSource.getData(cat[i]));
+    }
+    this.productList = this.productList.flat();
+    this.productList = searchingInProducts(this.productList, this.category);
+
+    if (sort) {
+      this.productList = sortBy(this.productList, sort);
+    }
+
+
+    this.renderList();
+  }
+
+  async initsearch(sort = "") {
+    this.productList = [];
+    let cat = categories();
+    for (let i = 0; i < cat.length; i++) {
+      this.productList.push(await this.dataSource.getData(cat[i]));
+    }
+    this.productList = this.productList.flat();
+    this.productList = searchingInProducts(this.productList, this.category);
+
+    if (sort) {
+      this.productList = sortBy(this.productList, sort);
+    }
+
+
+    this.renderList();
   }
 
   renderList() {

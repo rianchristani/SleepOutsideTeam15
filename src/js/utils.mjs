@@ -78,6 +78,12 @@ export async function loadHeaderFooter(callback) {
   renderWithTemplate(footerTemplate, footer);
 }
 
+
+
+export function categories() {
+  //////return the categories of products available to use in the search page
+  return ["backpacks", "sleeping-bags", "tents"];
+}
 export function sortBy(products, sortList) {
   const sortFunctions = {
     "Name Asc": (a, b) => a.Name.localeCompare(b.Name),
@@ -91,6 +97,12 @@ export function sortBy(products, sortList) {
   return sortFunction ? products.sort(sortFunction) : products;
 }
 
+
+export function searchingInProducts(products, searchValue) {
+  searchValue = searchValue.toLowerCase();
+  let results = products.filter(product => JSON.stringify(product).toLowerCase().includes(searchValue));
+  return results;
+}
 export function updateCartPrice(item) {
   const price = document.querySelector(".cart-footer");
   let totalAmount = 0;
@@ -107,8 +119,8 @@ export function updateCartPrice(item) {
   }
 }
 
-export function titleForCategory(category){
-  switch(category){
+export function titleForCategory(category) {
+  switch (category) {
     case "tents":
       return "Tents";
     case "backpacks":
@@ -120,4 +132,15 @@ export function titleForCategory(category){
     default:
       return "";
   }
+}
+
+export function categories() {
+  //////return the categories of products available to use in the search page
+  return ["backpacks", "sleeping-bags", "tents","hammocks"];
+}
+
+export function searchingInProducts(products, searchValue) {
+  searchValue = searchValue.toLowerCase();
+  let results = products.filter(product => JSON.stringify(product).toLowerCase().includes(searchValue));
+  return results;
 }
