@@ -62,6 +62,23 @@ export default class ProductList {
     this.renderList();
   }
 
+  async initsearch(sort = "") {
+    this.productList = [];
+    let cat = categories();
+    for (let i = 0; i < cat.length; i++) {
+      this.productList.push(await this.dataSource.getData(cat[i]));
+    }
+    this.productList = this.productList.flat();
+    this.productList = searchingInProducts(this.productList, this.category);
+
+    if (sort) {
+      this.productList = sortBy(this.productList, sort);
+    }
+
+
+    this.renderList();
+  }
+
   renderList() {
     renderListWithTemplate(
       productCardTemplate,
