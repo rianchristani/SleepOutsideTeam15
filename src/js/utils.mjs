@@ -107,8 +107,8 @@ export function updateCartPrice(item) {
   }
 }
 
-export function titleForCategory(category){
-  switch(category){
+export function titleForCategory(category) {
+  switch (category) {
     case "tents":
       return "Tents";
     case "backpacks":
@@ -120,4 +120,15 @@ export function titleForCategory(category){
     default:
       return "";
   }
+}
+
+export function categories() {
+  //////return the categories of products available to use in the search page
+  return ["backpacks", "sleeping-bags", "tents","hammocks"];
+}
+
+export function searchingInProducts(products, searchValue) {
+  searchValue = searchValue.toLowerCase();
+  let results = products.filter(product => JSON.stringify(product).toLowerCase().includes(searchValue));
+  return results;
 }
