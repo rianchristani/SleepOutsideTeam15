@@ -99,8 +99,8 @@ export function sortBy(products, sortList) {
 
 
 export function searchingInProducts(products, searchValue) {
-  searchValue = searchValue.toLowerCase();
-  let results = products.filter(product => JSON.stringify(product).toLowerCase().includes(searchValue));
+  let searchValueLowerCase = searchValue.toLowerCase();
+  let results = products.filter(product => JSON.stringify(product).toLowerCase().includes(searchValueLowerCase));
   return results;
 }
 export function updateCartPrice(item) {
@@ -134,13 +134,3 @@ export function titleForCategory(category) {
   }
 }
 
-export function categories() {
-  //////return the categories of products available to use in the search page
-  return ["backpacks", "sleeping-bags", "tents","hammocks"];
-}
-
-export function searchingInProducts(products, searchValue) {
-  searchValue = searchValue.toLowerCase();
-  let results = products.filter(product => JSON.stringify(product).toLowerCase().includes(searchValue));
-  return results;
-}
