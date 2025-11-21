@@ -19,24 +19,25 @@
 
     <main class="divider">
       <section class="checkout">
-        <form action="">
+        <form name="checkout">
           <h2>Your contact information</h2>
+          <input type="hidden" name="orderDate" id="orderDate">
           <fieldset>
             <legend>Customer Name</legend>
             <label>
                 First Name
-                <input name="user-name" type="text" required>
+                <input name="fname" type="text" required>
             </label>
             <label>
                 Last Name
-                <input name="user-lastname" type="text" required>
+                <input name="lname" type="text" required>
             </label>
           </fieldset>
           <fieldset>
             <legend>Address</legend>
             <label>
                 Street Address
-                <input name="stree-address" type="text" required>
+                <input name="street" type="text" required>
             </label>
             <label>
                 City
@@ -48,28 +49,35 @@
             </label>
             <label>
                 Zip Code
-                <input name="zip-code" type="text" required>
+                <input name="zip" id="zip" type="text" required>
             </label>
           </fieldset>
           <fieldset>
             <legend>Payment</legend>
             <label>
                 Credit Card Number
-                <input name="credit-card-number" type="text" required>
+                <input name="cardNumber" type="text" required>
             </label>
             <label>
                 Expiration Date
-                <input name="expiration-date" type="text" required>
+                <input name="expiration" type="text" required>
             </label>
             <label>
                 Security Code
-                <input name="security-code" type="text" required>
+                <input name="code" type="text" required>
             </label>
           </fieldset>
-          <input type="submit" value="Checkout">
+          <button type="submit" id="checkoutSubmit">Checkout</button>
         </form>
         <article>
-          
+          <h2>Order Summary</h2>
+          <div>Items</div>
+          <div id="num-items"></div>
+          <div>Subtotal</div>
+          <div id="cartTotal"></div>
+          <div id="summary-details">
+
+          </div>
         </article>
 
       </section>

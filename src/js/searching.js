@@ -1,5 +1,5 @@
 import cartCounter from "./cartCounter.mjs";
-import ProductData from "./ProductData.mjs";
+import ExternalServices from "./ExternalServices.mjs";
 import ProductList from "./ProductList.mjs";
 import { getParam, loadHeaderFooter } from "./utils.mjs";
 
@@ -25,7 +25,7 @@ for (let i = 0; i < types.length; i++) {
     }
 }
 
-const dataSource = new ProductData();
+const dataSource = new ExternalServices();
 const productListHTML = document.querySelector(".product-list");
 const productsTitle = document.querySelector(".products h2");
 productsTitle.textContent += `: ${category}`;
