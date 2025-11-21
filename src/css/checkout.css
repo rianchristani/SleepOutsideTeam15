@@ -1,0 +1,15 @@
+.checkout{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 10px 10px;
+  column-gap: 40px;
+}
+fieldset{
+  margin-bottom: 10px;
+}
+
+fieldset label{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
