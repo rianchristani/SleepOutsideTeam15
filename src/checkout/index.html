@@ -9,62 +9,61 @@
     <title>Sleep Outside | Checkout</title>
 
     <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/checkout.css">
-     <script src="../js/checkout.js" type="module"></script>
+    <link rel="stylesheet" href="/css/checkout.css" />
+    <script src="../js/checkout.js" type="module"></script>
   </head>
 
   <body>
-    <header class="divider">    
-    </header>
+    <header class="divider"></header>
 
     <main class="divider">
       <section class="checkout">
         <form name="checkout">
           <h2>Your contact information</h2>
-          <input type="hidden" name="orderDate" id="orderDate">
+          <input type="hidden" name="orderDate" id="orderDate" />
           <fieldset>
             <legend>Customer Name</legend>
             <label>
-                First Name
-                <input name="fname" type="text" required>
+              First Name
+              <input name="fname" type="text" required />
             </label>
             <label>
-                Last Name
-                <input name="lname" type="text" required>
+              Last Name
+              <input name="lname" type="text" required />
             </label>
           </fieldset>
           <fieldset>
             <legend>Address</legend>
             <label>
-                Street Address
-                <input name="street" type="text" required>
+              Street Address
+              <input name="street" type="text" required />
             </label>
             <label>
-                City
-                <input name="city" type="text" required>
+              City
+              <input name="city" type="text" required />
             </label>
             <label>
-                State
-                <input name="state" type="text" required>
+              State
+              <input name="state" type="text" required />
             </label>
             <label>
-                Zip Code
-                <input name="zip" id="zip" type="text" required>
+              Zip Code
+              <input name="zip" id="zip" type="text" required />
             </label>
           </fieldset>
           <fieldset>
             <legend>Payment</legend>
             <label>
-                Credit Card Number
-                <input name="cardNumber" type="text" required>
+              Credit Card Number
+              <input name="cardNumber" type="text" required />
             </label>
             <label>
-                Expiration Date
-                <input name="expiration" type="text" required>
+              Expiration Date
+              <input name="expiration" type="text" required />
             </label>
             <label>
-                Security Code
-                <input name="code" type="text" required>
+              Security Code
+              <input name="code" type="text" required />
             </label>
           </fieldset>
           <button type="submit" id="checkoutSubmit">Checkout</button>
@@ -75,11 +74,8 @@
           <div id="num-items"></div>
           <div>Subtotal</div>
           <div id="cartTotal"></div>
-          <div id="summary-details">
-
-          </div>
+          <div id="summary-details"></div>
         </article>
-
       </section>
     </main>
 
