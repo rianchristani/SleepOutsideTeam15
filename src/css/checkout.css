@@ -14,10 +14,9 @@ fieldset label {
   padding: 10px;
 }
 
-.sucess{
+.sucess {
   height: 85vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-

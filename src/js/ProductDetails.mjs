@@ -38,7 +38,14 @@ export default class ProductDetails {
 
     setLocalStorage("so-cart", productsInCart);
     alertMessage("Product added");
+    this.addCartAnimation();
     cartCounter();
+  }
+
+  addCartAnimation(){
+    const cart = document.querySelector("#cart");
+    cart.classList.add("cart-animation");
+    setTimeout(() => cart.classList.remove("cart-animation"), 1500);
   }
 
   renderProductDetails() {
