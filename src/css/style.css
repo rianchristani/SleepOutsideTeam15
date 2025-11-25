@@ -284,6 +284,24 @@ button {
   cursor: pointer;
 }
 
+.alert-message{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-color: var(--tertiary-color);
+  background-color: var(--primary-color);
+  align-items: center;
+}
+.hidden{
+  display: none;
+}
+.alert-message span{
+  cursor: pointer;
+}
+.alert-message span:hover{
+  background-color: #8a470c;
+  color: var(--light-grey);
+}
 /* Media Queries */
 @media screen and (min-width: 500px) {
   body {
