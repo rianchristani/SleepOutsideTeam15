@@ -21,6 +21,16 @@ function productCardTemplate(product) {
       <h2 class="card__name">${product.NameWithoutBrand}</h2>
       ${productPrice}
     </a>
+    <span class="more-Info">&#128712;</span>
+      <div class="modal">
+        <div class="modal-content">
+        <span class="close">&times;</span>
+        <h1 class="card__brand">${product.Brand.Name}</h1>
+        <h2 class="card__name">${product.NameWithoutBrand}</h2>
+        <p class="">${product.DescriptionHtmlSimple}</p>
+        <p>Total reviews: ${product.Reviews.ReviewCount} Avarage Rating: ${product.Reviews.AverageRating}</p>
+        </div>
+      </div>  
   </li>
   `;
 }
@@ -45,6 +55,28 @@ export default class ProductList {
     const title = document.querySelector("#title");
     title.textContent = `Top Products: ${titleForCategory(this.category)}`;
   }
+
+  addModalListeners(){
+    const infoBtn = document.querySelectorAll(".more-Info");
+    const closeBtn = document.querySelectorAll(".close");
+
+    infoBtn.forEach(button => {
+      button.addEventListener("click", (e) =>{
+        e.preventDefault();
+
+        const modal = e.target.closest("li").querySelector(".modal");
+        modal.style.display = "block";
+      })
+    })
+
+    closeBtn.forEach(button =>{
+      button.addEventListener("click", (e) => {
+        const modal = e.target.closest(".modal");
+        modal.style.display = "none";
+      })
+    })
+  }
+
   async initsearch(sort = "") {
     this.productList = [];
     let cat = categories();
@@ -68,5 +100,6 @@ export default class ProductList {
       this.outputHTML,
       this.productList,
     );
+    this.addModalListeners();
   }
 }
