@@ -49,6 +49,9 @@ export default class ProductDetails {
   }
 
   renderProductDetails() {
+    const productCategory = document.querySelector("#product-category");
+    const category = this.product["Category"].toUpperCase();
+    productCategory.textContent = `Product Category: ${category}`;
     const template = document.getElementById("product-detail");
     const renderedHTML = document.getElementById("rendered-product-detail");
     const clone = template.content.cloneNode(true);
