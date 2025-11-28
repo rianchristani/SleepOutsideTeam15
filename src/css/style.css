@@ -154,6 +154,51 @@ button {
   fill: gray;
 }
 
+.cart-animation {
+  animation: bounce-top 1.5s linear 0s 1 normal none;
+}
+
+@keyframes bounce-top {
+  0% {
+  }
+
+  25% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-24px);
+  }
+
+  55% {
+    transform: translateY(0);
+  }
+
+  65% {
+    transform: translateY(-12px);
+  }
+
+  75% {
+    transform: translateY(0);
+  }
+
+  82% {
+    transform: translateY(-6px);
+  }
+
+  87% {
+    transform: translateY(0);
+  }
+
+  93% {
+    transform: translateY(-4px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
 /* Mission section */
 .mission {
   position: absolute;
@@ -284,6 +329,30 @@ button {
   cursor: pointer;
 }
 
+.alert-message {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-color: var(--tertiary-color);
+  background-color: var(--primary-color);
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.hidden {
+  display: none;
+}
+
+.alert-message span {
+  padding: 0.2rem 0.5rem;
+  cursor: pointer;
+}
+
+.alert-message span:hover {
+  background-color: #8a470c;
+  color: var(--light-grey);
+}
+
 /* Media Queries */
 @media screen and (min-width: 500px) {
   body {
@@ -356,21 +425,18 @@ header form input[type="text"] {
   border: 1px solid rgb(1, 1, 1, 0.3);
 }
 
-
 /* Modal */
-.modal{
+.modal {
   display: none;
   position: fixed;
 
   top: 0;
   left: 0;
-  
 
   width: 100%;
   height: 100%;
 
   background-color: rgb(0, 0, 0, 0.4);
-
 }
 
 .modal-content {
@@ -380,20 +446,20 @@ header form input[type="text"] {
   border: 1px solid #888;
   border-radius: 10px;
   width: 30%;
-    & h1 {
-      font-size: 25px;
-      text-align: center;
+  & h1 {
+    font-size: 25px;
+    text-align: center;
   }
-    & h2 {
-      font-size: large;
-      text-align: center;
-      padding-bottom: 10px;
-      border-bottom: 2px solid black;
-    }
+  & h2 {
+    font-size: large;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid black;
+  }
 
-    & p {
-      text-align: justify;
-    }
+  & p {
+    text-align: justify;
+  }
 }
 
 .close {

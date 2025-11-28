@@ -53,7 +53,7 @@ export default class ProductList {
 
     this.renderList();
     const title = document.querySelector("#title");
-    title.textContent = `Top Products: ${titleForCategory(this.category)}`;
+    title.textContent = `Top Products: ${titleForCategory(this.category)}: ${this.productList.length} items found`;
   }
 
   addModalListeners(){

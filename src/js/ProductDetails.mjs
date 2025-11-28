@@ -1,5 +1,5 @@
 import cartCounter from "./cartCounter.mjs";
-import { setLocalStorage, getLocalStorage } from "./utils.mjs";
+import { setLocalStorage, getLocalStorage, alertMessage } from "./utils.mjs";
 
 export default class ProductDetails {
   constructor(productId, dataSource) {
@@ -37,19 +37,33 @@ export default class ProductDetails {
     }
 
     setLocalStorage("so-cart", productsInCart);
+    alertMessage("Product added");
+    this.addCartAnimation();
     cartCounter();
   }
 
+  addCartAnimation() {
+    const cart = document.querySelector("#cart");
+    cart.classList.add("cart-animation");
+    setTimeout(() => cart.classList.remove("cart-animation"), 1500);
+  }
+
   renderProductDetails() {
+    const productCategory = document.querySelector("#product-category");
+    const category = this.product["Category"].toUpperCase();
+    productCategory.textContent = `Product Category: ${category}`;
     const template = document.getElementById("product-detail");
     const renderedHTML = document.getElementById("rendered-product-detail");
     const clone = template.content.cloneNode(true);
-    const [brand, name, img, finalPrice,suggestedPrice,color, description, button] =
+    const [brand, name, img, finalPrice, suggestedPrice, color, description, button] =
       clone.querySelectorAll("h3, h2, img, p, p, p, p, button");
 
     brand.textContent = this.product["Brand"]["Name"];
     name.textContent = this.product["NameWithoutBrand"];
+    console.table(this.product["Images"]);
     img.setAttribute("src", this.product["Images"]["PrimaryLarge"]);
+    img.setAttribute("srcset", `${this.product.Images.PrimaryMedium} 160w,${this.product.Images.PrimaryLarge} 320w, ${this.product.Images.PrimaryExtraLarge} 600w`);
+    img.setAttribute("sizes", `(min-width: 1000px) 600px,(min-width: 600px) 320px,160px`);
     finalPrice.textContent = `$ ${this.product["FinalPrice"]}`;
     suggestedPrice.textContent = `$ ${this.product["SuggestedRetailPrice"]}`;
     color.textContent = this.product["Colors"]["ColorName"];

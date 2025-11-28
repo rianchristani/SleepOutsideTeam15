@@ -13,6 +13,11 @@ export function getLocalStorage(key) {
 export function setLocalStorage(key, data) {
   localStorage.setItem(key, JSON.stringify(data));
 }
+// remove data from local storage
+export function removeLocalStorage(key){
+  localStorage.removeItem(key);
+}
+
 // set a listener for both touchend and click
 export function setClick(selector, callback) {
   qs(selector).addEventListener("touchend", (event) => {
@@ -132,5 +137,34 @@ export function titleForCategory(category) {
     default:
       return "";
   }
+}
+
+export function alertMessage(message, scroll = true){
+  const alertMessageDiv = document.createElement("div");
+  alertMessageDiv.classList.add("alert-message");
+  const messageP = document.createElement("p");
+  messageP.textContent = message;
+  const xButton = document.createElement("span");
+  xButton.textContent = "X";
+  xButton.addEventListener("click", () => {
+    alertMessageDiv.classList.add("hidden");
+  });
+  alertMessageDiv.appendChild(messageP);
+  alertMessageDiv.appendChild(xButton);
+
+  const main = document.querySelector("main");
+  main.prepend(alertMessageDiv);
+
+  if (scroll)
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: "smooth"
+  });
+}
+
+export function removeAllAlerts() {
+  const alerts = document.querySelectorAll(".alert");
+  alerts.forEach((alert) => document.querySelector("main").removeChild(alert));
 }
 
