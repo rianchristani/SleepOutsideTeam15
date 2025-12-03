@@ -6,6 +6,7 @@ export default class ProductDetails {
     this.productId = productId;
     this.product = {};
     this.dataSource = dataSource;
+    this.selectedColor = null;
   }
 
   async init() {
@@ -33,6 +34,7 @@ export default class ProductDetails {
       previous[0].quantity += 1;
     } else {
       this.product.quantity = 1;
+      this.product.selectedColor = this.selectedColor || "Default Color"; // set selected color
       productsInCart.push(this.product);
     }
 
@@ -58,6 +60,7 @@ export default class ProductDetails {
     const [brand, name, img, finalPrice, suggestedPrice, color, description, button] =
       clone.querySelectorAll("h3, h2, img, p, p, p, p, button");
 
+
     brand.textContent = this.product["Brand"]["Name"];
     name.textContent = this.product["NameWithoutBrand"];
     console.table(this.product["Images"]);
@@ -66,11 +69,57 @@ export default class ProductDetails {
     img.setAttribute("sizes", `(min-width: 1000px) 600px,(min-width: 600px) 320px,160px`);
     finalPrice.textContent = `$ ${this.product["FinalPrice"]}`;
     suggestedPrice.textContent = `$ ${this.product["SuggestedRetailPrice"]}`;
-    color.textContent = this.product["Colors"]["ColorName"];
+    //color.textContent = this.product["Colors"]["ColorName"];
+    //colors.innerHTML = "";
+
+    // itarate through colors and create an element for each color option
+    this.product.Colors.forEach((col) => {
+      const option = document.createElement("p");
+      const colorName = col.ColorName;
+
+      const optionImg = document.createElement("img");
+      optionImg.setAttribute("src", col.ColorChipImageSrc);
+      optionImg.setAttribute("alt", colorName);
+
+      option.style.fontSize = "10px";
+
+      optionImg.classList.add("color-circle"); // CSS class for styling
+      optionImg.style.width = "22px";
+      optionImg.style.height = "22px";
+      optionImg.style.borderRadius = "50%";
+      optionImg.style.objectFit = "cover";
+      optionImg.style.cursor = "pointer";
+      optionImg.style.transition = "border 0.2s ease";
+
+      option.textContent = colorName;
+
+      optionImg.addEventListener("click", () => {
+        document.querySelectorAll(".color-circle").forEach(img => {
+          img.style.border = "none";
+        });
+
+        // add border to the selected color
+        this.setNewColor(colorName);
+        optionImg.style.border = "3px solid #0004ffff";
+
+      });
+
+      color.appendChild(optionImg);
+      color.appendChild(option);
+    });
+
     description.innerHTML = this.product["DescriptionHtmlSimple"];
     button.setAttribute("data-id", this.productId);
     button.setAttribute("id", "addToCart");
     button.addEventListener("click", this.addProductToCart.bind(this));
     renderedHTML.appendChild(clone);
   }
+
+  // method to set the selected color
+  setNewColor = (colorName) => {
+    this.selectedColor = colorName;
+  }
+
+
 }
+

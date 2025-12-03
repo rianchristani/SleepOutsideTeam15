@@ -11,7 +11,7 @@ function cartItemTemplate(item) {
   <a href="#">
     <h2 class="card__name">${item.Name}</h2>
   </a>
-  <p class="cart-card__color">${item.Colors[0].ColorName}</p>
+  <p class="cart-card__color">${item.selectedColor}</p>
   <p class="cart-card__quantity">${item.quantity}</p>
   <p class="cart-card__price">$${item.FinalPrice}</p>
   <span class="remove-item" data-id="${item.Id}">
@@ -25,10 +25,11 @@ function cartItemTemplate(item) {
 }
 
 export default class CartData {
-  constructor(cartItems, outputHTML, priceElement) {
+  constructor(cartItems, outputHTML, priceElement, selectedColor) {
     this.cartItems = cartItems;
     this.outputHTML = outputHTML;
     this.price = priceElement;
+    this.selectedColor = selectedColor; // selected color for items in cart
   }
 
   init() {
@@ -72,7 +73,7 @@ export default class CartData {
   addOneItem(id) {
     const itemToUpdate = this.cartItems.find((cartItem) => cartItem.Id === id);
 
-    if(itemToUpdate) {
+    if (itemToUpdate) {
       itemToUpdate.quantity += 1;
     }
 
@@ -84,11 +85,11 @@ export default class CartData {
   removeOneItem(id) {
     const itemToUpdate = this.cartItems.find((cartItem) => cartItem.Id === id);
 
-    if(itemToUpdate){
+    if (itemToUpdate) {
       itemToUpdate.quantity -= 1;
     }
 
-    if(itemToUpdate.quantity <= 0){
+    if (itemToUpdate.quantity <= 0) {
       this.removeItem(id)
     }
 
@@ -97,14 +98,14 @@ export default class CartData {
     this.updatePrice();
   }
 
-    updatePrice() {
+  updatePrice() {
     let totalAmount = 0;
     const items = this.cartItems;
 
     if (items != 0) {
       this.price.style.display = "block";
 
-    items.forEach((i) => {
+      items.forEach((i) => {
         totalAmount += parseFloat(i.FinalPrice) * parseFloat(i.quantity);
       });
     } else {
@@ -112,6 +113,15 @@ export default class CartData {
     }
 
     this.price.textContent = `Total: $${totalAmount.toFixed(2)}`;
+  }
+
+  // method to update color for all items in cart
+  updateColor() {
+    this.cartItems.forEach((item) => {
+      item.selectedColor = this.selectedColor || "Default Color";
+    });
+    setLocalStorage("so-cart", this.cartItems);
+    this.renderCartContents();
   }
 
 }
